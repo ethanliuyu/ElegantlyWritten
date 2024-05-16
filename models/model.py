@@ -345,10 +345,10 @@ class Seq2Seq(nn.Module):
 
         loss_aux = torch.mean(torch.sum(loss_aux / trg_seqlen.unsqueeze(-1), -1))
 
-        MSE_loss = self.argsMSE(_sample_categorical(args_logits), (self.trg_args + 3).float())
+        #MSE_loss = self.argsMSE(_sample_categorical(args_logits), (self.trg_args + 3).float())
 
         # seq_loss = ref_loss + loss_cmd + loss_args + loss_aux * 0.01 + class_loss+vq_loss
-        seq_loss = loss_cmd + loss_args + vq_loss + ref_loss # + MSE_loss*0.1
+        seq_loss = loss_cmd + loss_args + vq_loss + ref_loss  + loss_aux
 
         # 清空梯度
         self.optimizer_seq.zero_grad()
@@ -357,7 +357,7 @@ class Seq2Seq(nn.Module):
         # 跟新参数
         self.optimizer_seq.step()
 
-        return ref_loss, loss_cmd, loss_args, loss_aux * 0.01, class_loss, vq_loss
+        return ref_loss, loss_cmd, loss_args, loss_aux, class_loss, vq_loss
 
     def sample(self):
 
