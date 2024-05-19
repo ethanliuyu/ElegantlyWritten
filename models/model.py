@@ -4,7 +4,7 @@ import torch.nn.functional as F
 from einops import rearrange
 from torch.distributions.categorical import Categorical
 from torch.utils.data import DataLoader
-from models.quantize import LFQ
+from models.quantize import LFVQ
 
 from dataset import handSvgDataset
 from models.seqDec import TransformerDec , TransformerRef
@@ -73,7 +73,7 @@ class Seq2Seq(nn.Module):
         self.style_Aggr_norm = nn.LayerNorm(512)
 
 
-        self.vq = LFQ(
+        self.vq = LFVQ(
             codebook_size=4096,
             dim=512,
         )

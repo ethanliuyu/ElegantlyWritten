@@ -49,7 +49,7 @@ def entropy(prob):
 
 # class
 
-class LFQ(Module):
+class LFVQ(Module):
     def __init__(
         self,
         *,
