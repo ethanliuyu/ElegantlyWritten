@@ -6,7 +6,7 @@ import lmdb
 import numpy as np
 from torch.utils.data import Dataset, DataLoader
 
-content_reference_json = "../cr_mapping.json"
+#content_reference_json = "../cr_mapping.json"
 import random
 
 
