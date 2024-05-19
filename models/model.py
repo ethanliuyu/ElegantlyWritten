@@ -325,7 +325,7 @@ class Seq2Seq(nn.Module):
 
         p_argmax = torch.mean(p_argmax, -1) - 1  # 还原原始
 
-        p_argmax = denumericalize(p_argmax)  # 对坐标进行缩放，避免缠生较大损失无法优化
+        p_argmax = denumericalize(p_argmax)  # 对坐标进行缩放，避免产生较大损失无法优化
 
         out_p0 = p_argmax[:, :-1, :]  # 原始数据在开头添加了[0 0]标记，为了能够并行计算，去除最后一个元素
 
