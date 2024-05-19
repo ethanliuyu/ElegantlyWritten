@@ -92,6 +92,7 @@ example(in utf-8 format):
 ```bash
 {研: [砍, 妍],级: [结, 汲],脚: [胖, 法, 即], ...}
 ```
+Scripts are being prepared...
 
 <hr>
 
